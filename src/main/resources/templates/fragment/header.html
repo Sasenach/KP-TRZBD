@@ -1,0 +1,19 @@
+<div th:fragment="header1">
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/employee">Сотрудники</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/post">Должности</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/postavka">Поставки</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/postavshik">Поставщики</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/product">Продукт</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/store">Склад</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/vedomost">Ведомость</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/dish">Блюдо</a></li>
+        <li><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="stat">Данные</a></li>
+        <li style="list-style: none"><form class="nav-link px-5 text-secondary fs-5 fw-bold" th:action="@{/logout}" method="post"><input type="submit" value="Выйти"/></form></ul></li>
+      </ul>
+    </div>
+  </header>
+</div>

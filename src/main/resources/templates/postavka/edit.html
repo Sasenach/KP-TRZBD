@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить</title>
+</head>
+
+
+<style>
+    body {
+        background: #2B2B2B;
+        font-family: 'Segoe UI Semibold',serif;
+    }
+    .center-items{
+        text-align: center;
+        vertical-align: middle;
+    }
+    h1{
+        font-size: 28px;
+        color: #DCDFE1;
+        text-decoration: none;
+        font-weight: 500;
+        text-align: center;
+        margin: 15px;
+        vertical-align: middle;
+    }
+    .formStyle{
+        margin: 35px auto;
+        border-radius: 5px;
+        padding: 4px 12px;
+        width: 750px;
+        background: #3C3F41;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .formItem{
+        font-size: 24px;
+        font-weight: 500;
+        background-color: #3C3F41;
+        border-radius: 5px;
+        padding: 12px;
+        color: #87939A;
+        border-color: #538642;
+        margin: 7px;
+        border-width: 1px;
+        width: 710px;
+    }
+    .errorView{
+        margin-left: 7px;
+        color: #C75450;
+    }
+</style>
+
+<body>
+<h1>Измененить данные о поставщике</h1>
+<div class="formStyle">
+    <label>
+        <form method="post" th:each="el :${postavka}">
+            <input type="text" name="numberPostavki" th:value="el.numberPostavki" th:field="*{el.numberPostavki}"  placeholder="Номер поставки"/> <br/>
+            <div th:if="${#fields.hasErrors('el.numberPostavki')}" th:errors="*{el.numberPostavki}" class="errorView"></div>
+
+            <input type="text" name="dataPostavki" th:value="el.dataPostavki" th:field="*{el.dataPostavki}" placeholder="Дата поставки"/> <br/>
+            <div th:if="${#fields.hasErrors('el.dataPostavki')}" th:errors="*{el.dataPostavki}" class="errorView"></div>
+
+            <select class="select-css" name="postavshik_name">
+                <div th:each="element : ${el.postavshik}">
+                    <option th:value="${element.getId()}" th:text="${element.getOrgName()}" />
+                </div>
+            </select>
+
+            <select class="select-css" name="store">
+                <div th:each="element : ${el.store}">
+                    <option th:value="${element.getId()}" th:text="${element.getSkladNumber()}" />
+                </div>
+            </select>
+
+            <input class="formItem" type="submit" value="Отправить данные"> <br/>
+        </form>
+    </label>
+</div>
+</body>
+</html>

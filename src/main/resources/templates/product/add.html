@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить</title>
+</head>
+
+<style>
+  body {
+    background: #2B2B2B;
+    font-family: 'Segoe UI Semibold',serif;
+  }
+  h1{
+    font-size: 28px;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin: 15px;
+    vertical-align: middle;
+  }
+  form{
+    margin: 35px auto;
+    border-radius: 5px;
+    padding: 4px 12px;
+    width: 750px;
+    background: #3C3F41;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  input{
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #3C3F41;
+    border-radius: 5px;
+    padding: 12px;
+    color: #87939A;
+    border-color: #538642;
+    margin: 7px;
+    border-width: 1px;
+    width: 710px;
+  }
+  h1{
+    color: #87939A;
+  }
+  .errorView{
+    margin-left: 7px;
+    color: #C75450;
+  }
+</style>
+
+<body>
+<h1>Добавление продукта</h1>
+<form method="post" th:object="${product}">
+  <input type="text" name="name" th:field="*{name}" placeholder="Наименование"/> <br/>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="errorView"></div>
+
+  <input type="text" name="expirationDate" th:field="*{expirationDate}" placeholder="Срок годности"/> <br/>
+  <div th:if="${#fields.hasErrors('expirationDate')}" th:errors="*{expirationDate}" class="errorView"></div>
+
+  <input type="submit" value="Отправить данные"> <br/>
+</form> <br>
+</body>
+</html>

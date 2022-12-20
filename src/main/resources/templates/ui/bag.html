@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI Semibold', serif;
+    }
+
+    body {
+        /*margin-top: 20px;*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: floralwhite;
+    }
+
+    .main-container {
+        alignment: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 60%;
+        height: 400px;
+        background-color: #FFEEC0;
+        margin-top: 20px;
+        border-radius: 16px 16px 16px 16px;
+
+    }
+
+    .dish-info {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-photo {
+        width: auto;
+        height: 100%;
+        border-radius: 16px 0 0 16px;
+        object-fit: contain;
+    }
+
+    .menu-name {
+        width: auto;
+        height: auto;
+        font-size: 24px;
+        align-self: center;
+    }
+
+    .menu-desc {
+        width: auto;
+        height: auto;
+        margin-top: 20px;
+        margin-left: 20px;
+        font-size: 18px;
+        align-self: start;
+    }
+
+    .menu-price {
+        margin-right: 10px;
+        width: auto;
+        height: auto;
+        margin-top: 20px;
+        font-size: 36px;
+        align-self: end;
+    }
+
+    .btn {
+        background-color: #D2232A;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 18px;
+        margin-top: 40px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+
+    .btn:hover {
+        color: #FFEEC0;
+        transition: .3s;
+    }
+
+    .btn:not(:hover) {
+        color: #DCDFE1;
+        transition: .3s;
+    }
+
+    .btn__log__in {
+        background-color: #D2232A;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 18px;
+        margin-right: 10px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+
+    .nav {
+        width: 100%;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        position: fixed;
+        z-index: 2;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0;
+    }
+
+    .nav-left {
+        width: 70%;
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        font-weight: bold;
+        font-size: 26px;
+        background: #FFEEC0;
+    }
+
+    .nav-right {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        background: #FFEEC0;
+
+    }
+
+    .nav__link {
+        color: #3C3F41;
+        text-decoration: none;
+    }
+
+    .nav__link:hover {
+        color: #D2232A;
+        transition: .3s;
+    }
+
+    .nav__link:not(:hover) {
+        color: #3C3F41;
+        transition: .3s;
+    }
+
+    h1 {
+        height: auto;
+        width: auto;
+        font-weight: inherit;
+        z-index: 0;
+        color: #2B2B2B;
+    }
+</style>
+
+<header style="width: 100%">
+    <div th:insert="fragment/navigation :: user-header"></div>
+</header>
+<body>
+<h1 style="font-size: 36px; margin-top: 80px;">Корзина</h1>
+<!--    <div style="height: 20px; width: 20px; margin-top: 60px"></div>-->
+<div class="main-container" th:each="el : ${dishes}">
+    <img class="menu-photo" th:src="${el.getPhotoUrl()}">
+    <div class="dish-info">
+        <input type="hidden" name="id" th:value="${el.getId}">
+        <p class="menu-name" th:text="${el.getName()}"></p>
+        <p class="menu-desc" th:text="${el.getDescription()}"></p>
+        <p class="menu-price" th:text="${el.getCost()} + '₽'"></p>
+    </div>
+</div>
+<!--<div th:object="${oops}">-->
+<!--    <p th:value="oops"></p>-->
+<!--</div>-->
+<form style="cursor: pointer; margin-bottom: 20px" th:action="@{/ui/order}" method="post">
+    <input class="btn" type="submit" value="Оформить заказ">
+</form>
+</body>
+</html>

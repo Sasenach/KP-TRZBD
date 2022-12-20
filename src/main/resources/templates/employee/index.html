@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сотрудник</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <div th:insert="fragment/header :: header1"></div>
+</head>
+
+<style>
+  body {
+    background: #2B2B2B;
+    font-family: 'Segoe UI Semibold',serif;
+  }
+  .center-items{
+    text-align: center;
+    vertical-align: middle;
+  }
+  .formStyle{
+    margin: 35px auto;
+    border-radius: 5px;
+    padding: 4px 12px;
+    width: 750px;
+    background: #3C3F41;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .formItem{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #87939A;
+  }
+  .btn{
+    background-color: #538642;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #DCDFE1;
+    font-weight: 500;
+  }
+  .search{
+    width: 650px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #45494A;
+    color: #87939A;
+    border-radius: 5px;
+    padding: 7px;
+    margin-top: 35px;
+    border-width: 0px;
+  }
+  .btnSearch{
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #538642;
+    border-radius: 5px;
+    padding: 9px;
+    color: #DCDFE1;
+    border-width: 0px;
+  }
+</style>
+
+
+<body>
+<div style="margin-top: 100px" class="center-items">
+  <a class="btn" href="/employee/add" >Добавить</a>
+</div>
+<div class="center-items">
+  <form action="/employee/filter" method="get">
+    <input class="search" type="text" placeholder="Введите имя сотрудника" name="searchName">
+    <input class="btnSearch" type="submit" value="Найти" >
+  </form>
+</div>
+<div>
+  <div class="formStyle" th:each="el : ${employees}">
+    <p class="formItem" th:text="'Фамилия: '+${el.getSurname()}"></p>
+    <p class="formItem" th:text="'Имя: '+${el.getName()}"></p>
+    <div th:each="el_: ${el.getPost()}">
+      <p class="formItem" th:text="'Должность: '+${el_.getTitle()}"></p>
+    </div>
+    <a class="formItem" th:href="'/employee/details/'+${el.id}">Подробнее</a>
+  </div>
+</div>
+</body>
+</html>

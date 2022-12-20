@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее</title>
+</head>
+
+<style>
+    body {
+        background: #2B2B2B;
+        font-family: 'Segoe UI Semibold',serif;
+    }
+    .center-items{
+        text-align: center;
+        vertical-align: middle;
+    }
+    .formStyle{
+        margin: 35px auto;
+        border-radius: 5px;
+        padding: 4px 12px;
+        width: 750px;
+        background: #3C3F41;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .formItem{
+        margin-bottom: 5px;
+        margin-top: 5px;
+        margin-left: 10px;
+        text-decoration: none;
+        color: #87939A;
+    }
+    .btn{
+        background-color: #538642;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 24px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 500;
+    }
+</style>
+
+<body>
+<div>
+    <div class="formItem" th:each="el : ${vedomost}">
+        <p class="formStyle" th:text="'Номер ведомости: '+${el.getId()}"></p>
+        <p class="formStyle" th:text="'Дата приема товара на склад: '+${el.getDatePriema()}"></p>
+        <div  th:each="element : ${el.getEmployeeVedomost()}">
+            <p class="formStyle" th:text="'Сотрудник: '+ ${element.getSurname()} + ' ' + ${element.getName()}"></p>
+        </div>
+        <div  th:each="element : ${el.getProductVedomost()}">
+            <p class="formStyle" th:text="'Наименование продукта: ' + ${element.getName()}"></p>
+        </div>
+        <div  th:each="element : ${el.getPostavkaVedomost()}">
+            <p class="formStyle" th:text="'Дата поставки: ' + ${element.getDataPostavki()} + ', поставщик: ' + ${element.getPostavshik().getOrgName()}"></p>
+        </div>
+
+        <div class="center-items">
+            <a class="btn" th:href="'/vedomost/delete/'+${el.getId()}">Удалить</a>
+        </div>
+    </div>
+</div>
+<br>
+<a class="btn" th:href="'/vedomost'">Назад</a>
+
+
+</body>
+</html>

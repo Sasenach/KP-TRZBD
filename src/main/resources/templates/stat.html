@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    body {
+        background: #2B2B2B;
+        font-family: 'Segoe UI Semibold',serif;
+    }
+    .btn {
+        text-align: center;
+        vertical-align: middle;
+        margin:20px auto;
+        background-color: #538642;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 24px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 500;
+    }
+</style>
+
+<body>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+    var dataPoints = [];
+    var chart = new CanvasJS.Chart("chartContainer",{
+      title:{
+        text:"Статистика заказанных блюд"
+      },
+      data: [{
+
+        type: "column",
+        dataPoints : dataPoints,
+      }]
+    });
+    $.getJSON("http://localhost:8080/api", function(data) {
+      $.each(data, function(key, value){
+        dataPoints.push({label:(value.name) , y: parseInt(value.amount)});
+      });
+      chart.render();
+    });
+  }
+</script>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<a class="btn" th:href="'/backup-import'">Импорт</a>
+<a class="btn" th:href="'/backup-export'">Экспорт</a>
+</body>
+</html>

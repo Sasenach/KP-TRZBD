@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Зарегистрироваться</title>
+</head>
+
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI Semibold', serif;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: floralwhite;
+    }
+
+    .log-in-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 80px;
+        width: 100%;
+        background: #FFEEC0;
+    }
+
+    img {
+        height: auto;
+        width: 100px;
+    }
+
+    .sign-in-main {
+        height: 500px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 50px;
+        background: #FFEEC0;
+        border-radius: 10px;
+        border-width: medium;
+        border-style: solid;
+        border-color: #FFEEC0;
+    }
+
+    .sign-in-main:hover {
+        border-color: #C75450;
+        transition: .5s;
+    }
+
+    .sign-in-main:not(:hover) {
+        border-color: #FFEEC0;
+        transition: .5s;
+    }
+
+    .text-input {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        border-style: solid;
+        margin-top: 10px;
+        font-size: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-color: #C75450;
+        background-color: whitesmoke;
+        outline: none;
+    }
+
+    .text-input:focus {
+        border-color: #D2232A;
+    }
+
+    .log-in-button {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 20px;
+        padding: 10px;
+        background-color: #D2232A;
+        color: floralwhite;
+        text-align: center;
+        display: block;
+        border-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .reg-button {
+        width: auto;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 20px;
+        padding: 10px;
+        background-color: floralwhite;
+        border-style: solid;
+        border-color: #D2232A;
+        text-align: center;
+        display: block;
+    }
+    .errorView{
+        margin-left: 7px;
+        color: #C75450;
+    }
+    .musor{
+        width: 0;
+        height: 0;
+    }
+</style>
+
+<header style="width: 100%">
+    <div class="log-in-header" th:insert="fragment/navigation :: log-in-header"></div>
+</header>
+
+<body>
+<h1 style="font-size: 36px; margin-top: 20px;">Авторизация</h1>
+<div class="sign-in-main">
+    <form method="post" th:object="${user}">
+        <p style="font-size: 26px; margin-top: 10px; width: content-box">Зарегистрироваться</p>
+
+        <input class="text-input" type="text" name="name" th:field="*{name}" placeholder="ФИО"/> <br/>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="errorView"></div>
+        <input class="text-input" type="text" name="address" th:field="*{address}" placeholder="Адресс"/> <br/>
+        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errorView"></div>
+        <input class="text-input" type="text" name="email" th:field="*{email}" placeholder="Электроная почта"/> <br/>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="errorView"></div>
+        <input class="text-input" type="text" name="username" th:field="*{username}" placeholder="Логин"/> <br/>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="errorView"></div>
+        <input class="text-input" type="text" name="password" th:field="*{password}" placeholder="Пароль"/> <br/>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="errorView"></div>
+        <input class="musor" type="hidden" name="surname" th:field="*{surname}" placeholder="Пароль"/> <br/>
+        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="errorView"></div>
+        <input class="musor" type="hidden" name="midlename" th:field="*{midlename}" placeholder="Пароль"/> <br/>
+        <div th:if="${#fields.hasErrors('midlename')}" th:errors="*{midlename}" class="errorView"></div>
+        <input class="musor" type="hidden" name="pasportNumber" th:field="*{pasportNumber}" placeholder="Пароль"/> <br/>
+        <div th:if="${#fields.hasErrors('pasportNumber')}" th:errors="*{pasportNumber}" class="errorView"></div>
+        <input type="submit" value="Зарегистрироваться" class="log-in-button">
+    </form>
+</div>
+
+</body>
+</html>

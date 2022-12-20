@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<header>
+<div th:fragment="user-header">
+    <div class="nav">
+        <nav class="nav-left">
+            <a class="nav__link" href="index">Меню</a>
+            <a class="nav__link" href="about-us">О нас</a>
+            <a class="nav__link" href="bag">Корзина</a>
+        </nav>
+        <nav class="nav-right">
+            <a class="btn__log__in" th:href="'/login'">Войти в аккаунт</a>
+        </nav>
+    </div>
+</div>
+<div class="log-in-header" th:fragment="log-in-header">
+    <a th:href="'/ui/index'">
+        <img src="https://static.tildacdn.com/tild3361-3164-4432-b835-323638643961/image_56.png",>
+    </a>
+</div>
+</header>
+</html>

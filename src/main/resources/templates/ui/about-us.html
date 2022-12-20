@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>О нас</title>
+</head>
+
+<style>
+  *,
+  *::before,
+  *::after{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Semibold', serif;
+  }
+
+  body{
+    /*margin-top: 20px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: floralwhite;
+  }
+  .btn__log__in{
+     background-color: #D2232A;
+     border-radius: 10px;
+     padding: 10px;
+     font-size: 18px;
+     margin-right: 10px;
+     text-decoration: none;
+     color: #DCDFE1;
+     font-weight: 300;
+   }
+
+  .nav{
+    width: 100%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0;
+  }
+  .nav-left{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+    font-size: 26px;
+    background: #FFEEC0;
+  }.nav-right{
+     width: 30%;
+     height: 100%;
+     display: flex;
+     justify-content: end;
+     align-items: center;
+     background: #FFEEC0;
+
+   }
+  .nav__link{
+    color: #3C3F41;
+    text-decoration: none;
+  }
+
+  .nav__link:hover{
+    color: #D2232A;
+    transition: .3s;
+  }
+  h1{
+    height: auto;
+    width: auto;
+    font-weight: inherit;
+    z-index: 0;
+    color: #2B2B2B;
+  }
+  h2{
+    height: auto;
+    width: auto;
+    align-self: start;
+    margin-left: 10%;
+    font-weight: inherit;
+    z-index: 0;
+    color: #2B2B2B;
+  }
+  .info-buttons-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      align-self: center;
+      margin-top: 60px;
+      background: #FFEEC0;
+      border-radius: 20px;
+      width: 60%;
+      height: 100px;
+  }
+  .info-buttons-container:hover{
+      width: 80%;
+      transition: .4s;
+  }
+  .info-buttons-container:not(:hover){
+      width: 60%;
+      transition: .4s;
+  }
+  .info-button{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-left: 10px;
+      height: 50%;
+      border-radius: 15px;
+      background: #C75450;
+      font-size: 22px;
+      font-weight: 200;
+      color: #DCDFE1;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  .info-button:hover{
+      background: #D2232A;
+      transition: .4s;
+  }
+  .info-button:not(:hover){
+      background: #C75450;
+      transition: .4s;
+  }
+  .img-info-button{
+      height: 25px;
+      width: 25px;
+  }
+  .raiting{
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-self: start;
+      margin-left: 10%;
+      height: auto;
+      z-index: 0;
+  }
+  .cool-photo{
+      width: 60%;
+      height: 500px;
+      background-image: url("https://restoran.cafe/media/cache/big_img_logged/media/organization/4209/615ec4deccee4.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      margin-top: 20px;
+  }
+  .cool-photo-2{
+      width: 60%;
+      height: 500px;
+      background-image: url("https://gcdn.tomesto.ru/img/place/000/025/407/kafe-varenichnaya-1-na-verhney-radischevskoy_db199_full-141574.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      margin-top: 20px;
+  }
+  .cool-photo-3{
+      width: 60%;
+      height: 500px;
+      background-image: url("https://assets.resto.ru/data/msk/places/14734/615a.png");
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      margin-top: 20px;
+  }
+  .call-back{
+      width: 80%;
+      height: 500px;
+      background-image: url("https://psv4.userapi.com/c237331/u262139296/docs/d10/dad9516d50cb/Varenichnaya.png?extra=8E7fKS67GJL_Lny3W3vuLfL0UeD0VAMgWdOBVPAlgPR5Ia7iMQ4ypGuF0amL4GP9Hbk9fHLsi57FfAyvEt3GmT0KzUeksAEA7bLBKaLdJi-pq4EqyxJcWV8qFbTuOA13wnarhiy0yOxxdEzqDC6OHNrg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 20px;
+      border-style: solid;
+      border-color: #D2232A;
+      border-width: 10px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+  }
+</style>
+
+<header style="width: 100%">
+  <div th:insert="fragment/navigation :: user-header"></div>
+</header>
+
+<body>
+  <h1 style="font-size: 40px; margin-top: 80px;">О нас</h1>
+  <div class="raiting">
+      <img style="width: 20px; height: 20px" src="https://cdn-icons-png.flaticon.com/512/2708/2708402.png">
+      <img style="width: 20px; height: 20px; margin-left: 5px" src="https://cdn-icons-png.flaticon.com/512/2708/2708402.png">
+      <img style="width: 20px; height: 20px; margin-left: 5px" src="https://cdn-icons-png.flaticon.com/512/2708/2708402.png">
+      <img style="width: 20px; height: 20px; margin-left: 5px" src="https://cdn-icons-png.flaticon.com/512/2708/2708402.png">
+      <img style="width: 20px; height: 20px; margin-left: 5px" src="https://cdn-icons-png.flaticon.com/512/2708/2708357.png">
+      <p style="font-size: 18px; margin-left: 10px">4.3 на
+          <a style="color: dodgerblue; cursor: pointer" onClick="window.open('https://yandex.ru/maps/org/varenichnaya_1/72061017710/reviews/?ll=37.658923%2C55.756784&z=15', '_blank')">Яндекс</a>
+      </p>
+  </div>
+  <h2 style="font-size: 36px; margin-top: 10px;">Вареничная номер один</h2>
+  <div class="info-buttons-container">
+    <div class="info-button">
+        <img class="img-info-button"
+             src="https://cdn-icons-png.flaticon.com/512/739/739260.png">
+        <a style="margin-left: 10px" onClick="window.open('https://t.me/JaquesAhrien', '_blank')">Телеграмм</a>
+    </div>
+    <div class="info-button">
+        <img class="img-info-button"
+             src="https://cdn-icons-png.flaticon.com/512/159/159832.png">
+        <p style="margin-left: 10px">Позвонить</p>
+    </div>
+    <div class="info-button">
+        <img class="img-info-button"
+             src="https://cdn-icons-png.flaticon.com/512/8005/8005569.png">
+        <a style="margin-left: 10px" onClick="window.open('https://yandex.ru/maps/org/atrium/1010479265/?from=tabbar&ll=37.713946%2C55.811782&mode=search&sll=37.713946%2C55.811387&source=serp_navig&text=атриум&z=10', '_blank')">Как доехать</a>
+    </div>
+  </div>
+  <img style="object-fit: contain; height: 120px; width: 80%; margin-top: 40px" src="https://sun9-west.userapi.com/sun9-56/s/v1/ig2/nizDs3ccrYZN4HhjY85QKJIgt8SyPJpKr29tePEb98TkkQE3r4Ybt7SAKhYWz5PPt6k3CdtqV_w419rhBWeBxrdr.jpg?size=1220x163&quality=96&type=album">
+  <h2 style="font-size: 36px; margin-top: 40px;">Уютная атмосфера ностальгии</h2>
+  <div class="cool-photo"></div>
+  <h2 style="font-size: 36px; margin-top: 40px;">Каждая деталь — часть былой эпохи</h2>
+  <div class="cool-photo-2"></div>
+  <h2 style="font-size: 36px; margin-top: 40px;">Вкус знакомый каждому</h2>
+  <div class="cool-photo-3"></div>
+  <div class="call-back"></div>
+</body>
+</html>

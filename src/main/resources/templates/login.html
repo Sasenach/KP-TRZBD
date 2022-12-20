@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Войти</title>
+</head>
+
+<style>
+  *,
+  *::before,
+  *::after{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Semibold', serif;
+  }
+
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: floralwhite;
+  }
+  .log-in-header{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      background: #FFEEC0;
+  }
+  img{
+      height: auto;
+      width: 100px;
+  }
+  .sign-in-main{
+    height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 50px;
+    background: #FFEEC0;
+    border-radius: 10px;
+    border-width: medium;
+    border-style: solid;
+    border-color: #FFEEC0;
+  }
+  .sign-in-main:hover{
+      border-color: #C75450;
+      transition: .5s;
+  }
+  .sign-in-main:not(:hover){
+      border-color: #FFEEC0;
+      transition: .5s;
+  }
+  .text-input{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border-style: solid;
+      margin-top: 20px;
+      font-size: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-color: #C75450;
+      background-color: whitesmoke;
+      outline: none;
+  }
+  .text-input:focus{
+      border-color: #D2232A;
+  }
+  .log-in-button{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #D2232A;
+      color: floralwhite;
+      text-align: center;
+      display: block;
+      border-style: none;
+  }
+  a{
+      text-decoration: none;
+  }
+  .reg-button{
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: floralwhite;
+      border-style: solid;
+      border-color: #D2232A;
+      text-align: center;
+      display: block;
+  }
+</style>
+
+<header style="width: 100%">
+    <div class="log-in-header" th:insert="fragment/navigation :: log-in-header"></div>
+</header>
+
+<body>
+  <h1 style="font-size: 36px; margin-top: 20px;">Авторизация</h1>
+  <div class="sign-in-main">
+    <form method="post" th:action="@{/login}">
+      <p style="font-size: 26px; margin-top: 40px; width: content-box">Войти</p>
+      <input class="text-input" type="text" name="username" placeholder="Логин"/> <br/>
+      <input class="text-input" type="text" name="password" placeholder="Пароль"/> <br/>
+      <input type="submit" class="log-in-button" style="color: black" value="Войти">
+      <a style="color: black" href="/ui/sign-up"><p class="reg-button">Зарегистрироваться</p></a>
+    </form>
+      <p th:if="${param.error}" class="form-text">
+          Неправильные эл. почта или пароль
+      </p>
+  </div>
+
+</body>
+</html>
