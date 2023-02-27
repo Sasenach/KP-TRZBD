@@ -3,6 +3,7 @@ package com.example.upitog.Controller;
 import com.example.upitog.Model.Postavshik;
 import com.example.upitog.Repository.PostavshikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/postavshik")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class PostavshikController {
     @Autowired
     PostavshikRepository repository;

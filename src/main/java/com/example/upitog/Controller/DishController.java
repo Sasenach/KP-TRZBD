@@ -3,6 +3,7 @@ package com.example.upitog.Controller;
 import com.example.upitog.Model.*;
 import com.example.upitog.Repository.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/dish")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class DishController {
     @Autowired
     DishRepository repository;

@@ -6,6 +6,7 @@ import com.example.upitog.Repository.PostavkaRepository;
 import com.example.upitog.Repository.ProductRepository;
 import com.example.upitog.Repository.VedomostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/vedomost")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class VedomostController {
     @Autowired
     VedomostRepository repository;

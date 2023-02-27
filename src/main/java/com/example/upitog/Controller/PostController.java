@@ -4,6 +4,7 @@ import com.example.upitog.Model.Post;
 import com.example.upitog.Model.Product;
 import com.example.upitog.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/post")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class PostController {
     @Autowired
     PostRepository repository;
